@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dcg54iac8kcst"]
+[gd_scene load_steps=6 format=3 uid="uid://dcg54iac8kcst"]
 
 [ext_resource type="Script" path="res://survivors_game.gd" id="1_l4c2m"]
 [ext_resource type="PackedScene" uid="uid://bssdgkhens4cy" path="res://player.tscn" id="1_lwmhs"]
+[ext_resource type="Script" path="res://game_manager.gd" id="2_bqabm"]
 [ext_resource type="PackedScene" uid="uid://c6k7niwfqmf8q" path="res://pine_tree.tscn" id="2_v3x7q"]
 
 [sub_resource type="Curve2D" id="Curve2D_3cw5r"]
@@ -24,6 +25,55 @@ offset_right = 1938.0
 offset_bottom = 1115.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+
+[node name="GameManager" type="Node" parent="CanvasLayer/ColorRect"]
+unique_name_in_owner = true
+script = ExtResource("2_bqabm")
+
+[node name="ScoreOSD" type="Label" parent="CanvasLayer/ColorRect/GameManager"]
+anchors_preset = -1
+anchor_left = 0.059375
+anchor_top = 0.0203704
+anchor_right = 0.144792
+anchor_bottom = 0.062037
+offset_top = -2.0
+offset_bottom = -1.99993
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "000000000"
+uppercase = true
+
+[node name="ScoreLabel" type="Label" parent="CanvasLayer/ColorRect/GameManager"]
+anchors_preset = -1
+anchor_left = 0.000520833
+anchor_top = 0.0203704
+anchor_right = 0.053125
+anchor_bottom = 0.062037
+offset_top = -2.0
+offset_bottom = -1.99993
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "Score"
+uppercase = true
+
+[node name="KillsOSD" type="Label" parent="CanvasLayer/ColorRect/GameManager"]
+offset_left = 592.0
+offset_top = 20.0
+offset_right = 674.0
+offset_bottom = 70.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "0000
+"
+
+[node name="HitRateOSD" type="Label" parent="CanvasLayer/ColorRect/GameManager"]
+offset_left = 683.0
+offset_top = 20.0
+offset_right = 792.0
+offset_bottom = 65.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 32
+text = "00.00%"
 
 [node name="Player" parent="." instance=ExtResource("1_lwmhs")]
 position = Vector2(912, 559)
@@ -66,7 +116,7 @@ position = Vector2(1542, 759)
 position = Vector2(1426, 939)
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.2
+wait_time = 0.5
 autostart = true
 
 [node name="GameOver" type="CanvasLayer" parent="."]

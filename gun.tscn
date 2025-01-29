@@ -18,15 +18,15 @@ shape = SubResource("CircleShape2D_jqjfb")
 
 [node name="Pistol" type="Sprite2D" parent="WeaponPivot"]
 position = Vector2(84, -33)
-scale = Vector2(1, 1)
 texture = ExtResource("1_n4x1w")
 
 [node name="ShootingPoint" type="Marker2D" parent="WeaponPivot/Pistol"]
 unique_name_in_owner = true
 position = Vector2(26.5625, -10.4167)
 
-[node name="Timer" type="Timer" parent="."]
+[node name="BulletTimer" type="Timer" parent="."]
+unique_name_in_owner = true
 wait_time = 0.05
 autostart = true
 
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="BulletTimer" to="." method="_on_timer_timeout"]
