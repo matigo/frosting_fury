@@ -9,7 +9,7 @@ func _ready() -> void:
 	%Slime.play_walk()
 	manager.add_cake()
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	var direction = global_position.direction_to(player.global_position)
 	velocity = direction * 300.0
 	move_and_slide()

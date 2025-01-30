@@ -37,7 +37,7 @@ shape = SubResource("CircleShape2D_x4o6q")
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="Gun" parent="." instance=ExtResource("3_dwqcg")]
-position = Vector2(1, -19)
+position = Vector2(1, -15)
 
 [node name="HurtBox" type="Area2D" parent="."]
 unique_name_in_owner = true

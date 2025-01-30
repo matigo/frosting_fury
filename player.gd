@@ -23,12 +23,17 @@ func _physics_process(delta: float) -> void:
 		health -= DAMAGE_RATE * overlapping_mobs.size() * delta
 		%ProgressBar.value = health
 
+	# If the player is no longer healthy, show the end screen
 	if health <= 0:
 		health_depleted.emit()
-	
+
 	# Check if the Player is trying to shoot or not
 	if Input.is_action_just_pressed("shoot"):
+		timer_gun.start()
 		timer_gun.paused = false
 	
 	if Input.is_action_just_released("shoot"):
 		timer_gun.paused = true
+
+func found_donut() -> void:
+	pass

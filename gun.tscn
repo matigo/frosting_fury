@@ -27,6 +27,5 @@ position = Vector2(26.5625, -10.4167)
 [node name="BulletTimer" type="Timer" parent="."]
 unique_name_in_owner = true
 wait_time = 0.05
-autostart = true
 
 [connection signal="timeout" from="BulletTimer" to="." method="_on_timer_timeout"]

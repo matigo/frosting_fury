@@ -1,9 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://dcg54iac8kcst"]
+[gd_scene load_steps=5 format=3 uid="uid://dcg54iac8kcst"]
 
 [ext_resource type="Script" path="res://survivors_game.gd" id="1_l4c2m"]
 [ext_resource type="PackedScene" uid="uid://bssdgkhens4cy" path="res://player.tscn" id="1_lwmhs"]
 [ext_resource type="Script" path="res://game_manager.gd" id="2_bqabm"]
-[ext_resource type="PackedScene" uid="uid://c6k7niwfqmf8q" path="res://pine_tree.tscn" id="2_v3x7q"]
 
 [sub_resource type="Curve2D" id="Curve2D_3cw5r"]
 _data = {
@@ -25,23 +24,11 @@ offset_right = 1938.0
 offset_bottom = 1115.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+color = Color(0.247059, 0.607843, 0.0431373, 1)
 
 [node name="GameManager" type="Node" parent="CanvasLayer/ColorRect"]
 unique_name_in_owner = true
 script = ExtResource("2_bqabm")
-
-[node name="ScoreOSD" type="Label" parent="CanvasLayer/ColorRect/GameManager"]
-anchors_preset = -1
-anchor_left = 0.059375
-anchor_top = 0.0203704
-anchor_right = 0.144792
-anchor_bottom = 0.062037
-offset_top = -2.0
-offset_bottom = -1.99993
-theme_override_colors/font_color = Color(1, 0, 0, 1)
-theme_override_font_sizes/font_size = 32
-text = "000000000"
-uppercase = true
 
 [node name="ScoreLabel" type="Label" parent="CanvasLayer/ColorRect/GameManager"]
 anchors_preset = -1
@@ -49,14 +36,62 @@ anchor_left = 0.000520833
 anchor_top = 0.0203704
 anchor_right = 0.053125
 anchor_bottom = 0.062037
+offset_left = 49.0
 offset_top = -2.0
-offset_bottom = -1.99993
-theme_override_colors/font_color = Color(1, 0, 0, 1)
-theme_override_font_sizes/font_size = 32
+offset_right = 100.0
+offset_bottom = 20.0001
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 48
 text = "Score"
 uppercase = true
 
+[node name="BulletLabel" type="Label" parent="CanvasLayer/ColorRect/GameManager"]
+anchors_preset = -1
+anchor_left = 0.000520833
+anchor_top = 0.0203704
+anchor_right = 0.053125
+anchor_bottom = 0.062037
+offset_left = 4.0
+offset_top = 86.0
+offset_right = 103.0
+offset_bottom = 108.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 48
+text = "Bullets"
+uppercase = true
+
+[node name="ScoreOSD" type="Label" parent="CanvasLayer/ColorRect/GameManager"]
+anchors_preset = -1
+anchor_left = 0.059375
+anchor_top = 0.0203704
+anchor_right = 0.144792
+anchor_bottom = 0.062037
+offset_left = 106.0
+offset_top = -2.00003
+offset_right = 352.999
+offset_bottom = 20.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 48
+text = "-"
+uppercase = true
+
+[node name="BulletOSD" type="Label" parent="CanvasLayer/ColorRect/GameManager"]
+anchors_preset = -1
+anchor_left = 0.059375
+anchor_top = 0.0203704
+anchor_right = 0.144792
+anchor_bottom = 0.062037
+offset_left = 106.0
+offset_top = 83.0
+offset_right = 352.999
+offset_bottom = 105.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 48
+text = "-"
+uppercase = true
+
 [node name="KillsOSD" type="Label" parent="CanvasLayer/ColorRect/GameManager"]
+visible = false
 offset_left = 592.0
 offset_top = 20.0
 offset_right = 674.0
@@ -67,6 +102,7 @@ text = "0000
 "
 
 [node name="HitRateOSD" type="Label" parent="CanvasLayer/ColorRect/GameManager"]
+visible = false
 offset_left = 683.0
 offset_top = 20.0
 offset_right = 792.0
@@ -88,33 +124,6 @@ unique_name_in_owner = true
 position = Vector2(-166.075, 1208)
 rotation = -1.57534
 
-[node name="StaticBody2D" parent="." instance=ExtResource("2_v3x7q")]
-position = Vector2(440, 735)
-
-[node name="StaticBody2D2" parent="." instance=ExtResource("2_v3x7q")]
-position = Vector2(267, 412)
-
-[node name="StaticBody2D3" parent="." instance=ExtResource("2_v3x7q")]
-position = Vector2(335, 388)
-
-[node name="StaticBody2D4" parent="." instance=ExtResource("2_v3x7q")]
-position = Vector2(1397, 256)
-
-[node name="StaticBody2D5" parent="." instance=ExtResource("2_v3x7q")]
-position = Vector2(1550, 283)
-
-[node name="StaticBody2D6" parent="." instance=ExtResource("2_v3x7q")]
-position = Vector2(1472, 321)
-
-[node name="StaticBody2D7" parent="." instance=ExtResource("2_v3x7q")]
-position = Vector2(1405, 364)
-
-[node name="StaticBody2D8" parent="." instance=ExtResource("2_v3x7q")]
-position = Vector2(1542, 759)
-
-[node name="StaticBody2D9" parent="." instance=ExtResource("2_v3x7q")]
-position = Vector2(1426, 939)
-
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.5
 autostart = true
@@ -128,19 +137,19 @@ offset_left = -65.0
 offset_top = -14.0
 offset_right = 1938.0
 offset_bottom = 1115.0
-color = Color(0, 0, 0, 0.392157)
+color = Color(0, 0, 0, 0.784314)
 
-[node name="Label" type="Label" parent="GameOver/ColorRect"]
+[node name="TitleEnd" type="Label" parent="GameOver/ColorRect"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -499.5
-offset_top = -159.5
-offset_right = 499.5
-offset_bottom = 159.5
+offset_left = -1001.5
+offset_top = -357.5
+offset_right = 1000.5
+offset_bottom = -38.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(1, 0, 0, 1)
@@ -149,6 +158,78 @@ text = "GAME OVER"
 horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
+
+[node name="ScoreLabel" type="Label" parent="GameOver/ColorRect"]
+layout_mode = 0
+offset_left = 583.0
+offset_top = 545.0
+offset_right = 960.0
+offset_bottom = 677.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 96
+text = "Score"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="KillsLabel" type="Label" parent="GameOver/ColorRect"]
+layout_mode = 0
+offset_left = 578.0
+offset_top = 677.0
+offset_right = 955.0
+offset_bottom = 809.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 96
+text = "Kills"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="ScoreOSD" type="Label" parent="GameOver/ColorRect"]
+layout_mode = 0
+offset_left = 1029.0
+offset_top = 547.0
+offset_right = 1670.0
+offset_bottom = 679.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 96
+text = "000000
+"
+vertical_alignment = 1
+
+[node name="KillsOSD" type="Label" parent="GameOver/ColorRect"]
+layout_mode = 0
+offset_left = 1027.0
+offset_top = 676.0
+offset_right = 1668.0
+offset_bottom = 808.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 96
+text = "000000
+"
+vertical_alignment = 1
+
+[node name="HitRateOSD" type="Label" parent="GameOver/ColorRect"]
+layout_mode = 0
+offset_left = 1030.0
+offset_top = 803.0
+offset_right = 1671.0
+offset_bottom = 935.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 96
+text = "000000
+"
+vertical_alignment = 1
+
+[node name="HitRateLabel" type="Label" parent="GameOver/ColorRect"]
+layout_mode = 0
+offset_left = 585.0
+offset_top = 802.0
+offset_right = 962.0
+offset_bottom = 934.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 96
+text = "Hit Rate"
+horizontal_alignment = 2
+vertical_alignment = 1
 
 [connection signal="health_depleted" from="Player" to="." method="_on_player_health_depleted"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
