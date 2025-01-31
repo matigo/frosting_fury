@@ -1,9 +1,7 @@
 extends Node
 
 @onready var timer_mob = get_node("/root/Game/Timer")
-@onready var hrate_osd = get_node("/root/Game/CanvasLayer/ColorRect/GameManager/HitRateOSD")
 @onready var score_osd = get_node("/root/Game/CanvasLayer/ColorRect/GameManager/ScoreOSD")
-@onready var kills_osd = get_node("/root/Game/CanvasLayer/ColorRect/GameManager/KillsOSD")
 @onready var bullet_osd = get_node("/root/Game/CanvasLayer/ColorRect/GameManager/BulletOSD")
 
 var cakes:int = 0
@@ -45,6 +43,7 @@ func get_hitrate() -> float:
 func add_bullets(rounds:int) -> void:
 	if rounds > 0:
 		bullets += rounds
+	bullet_osd.text = str(bullets)
 
 func sub_bullets(rounds:int) -> void:
 	if rounds > 0 && bullets > 0:
@@ -57,21 +56,18 @@ func add_point(points:int) -> void:
 		score += points * 5
 		if score < 0:
 			score = 0
-
-		score_osd.text = str(score)
+	score_osd.text = str(score)
 
 func sub_point(points:int) -> void:
 	if points > 0:
 		score -= points
 		if score < 0:
 			score = 0
-
-		score_osd.text = str(score)
+	score_osd.text = str(score)
 
 func add_shot() -> void:
 	shots += 1
 	var rate:float = float(int((float(hits) / float(shots)) * 10000)) / 100
-	hrate_osd.text = str(rate) + "%"
 
 func add_cake() -> void:
 	cakes += 1
@@ -85,7 +81,6 @@ func add_kill() -> void:
 	var subsecs:float = 0.05
 	cakes -= 1
 	kills += 1
-	kills_osd.text = str(kills)
 
 	# The more we kill, the faster they spawn
 	if fmod(kills, 5) == 0:
